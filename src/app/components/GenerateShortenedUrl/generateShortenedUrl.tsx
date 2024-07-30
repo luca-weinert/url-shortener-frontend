@@ -16,7 +16,9 @@ export default function GenerateShortenedUrl() {
     async function GetShortenedUrl() {
         const test = shortenerService.generateShortenedUrl("https://wwww.test.de");
         console.log(test);
+        console.log(test);
         setShortenedUrl(test);
+        window.location.replace('...');
     }
 
     return (

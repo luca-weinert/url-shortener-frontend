@@ -1,4 +1,6 @@
-﻿export class ShortenerService {
+﻿import { GetServerSideProps } from 'next';
+
+export class ShortenerService {
     private readonly host: string | undefined = undefined;
 
     constructor() {
@@ -6,10 +8,10 @@
     }
 
     public generateShortenedUrl(targetUrl: string) {
-        const shortCode = this.generateShortCode();
+        const shortCode = this.generateShortCode(); 
         return this.host + "/" + shortCode;
     }
-
+    
     private generateShortCode(): string {
         let result = '';
         let chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
