@@ -1,10 +1,8 @@
-﻿import { GetServerSideProps } from 'next';
-
-export class ShortenerService {
+﻿export class ShortenerService {
     private readonly host: string | undefined = undefined;
 
     constructor() {
-        this.host = process.env.NEXT_PUBLIC_HOST || undefined;
+    this.host = process.env.NEXT_PUBLIC_HOST || undefined;
     }
 
     public generateShortenedUrl(targetUrl: string) {
