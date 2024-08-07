@@ -1,4 +1,4 @@
-﻿import {ShortenerService} from "@/app/services/shortenerService";
+﻿import {getTargetUrl, increaseClickCount} from "@/app/services/shortenerService";
 import {permanentRedirect} from "next/navigation";
 
 interface AliasPageProps {
@@ -9,14 +9,12 @@ interface AliasPageProps {
 
 export default async function AliasPage({ params } : AliasPageProps) {
     const {alias} = params;
-    const shortenerService = new ShortenerService();
-    const targetUrl = await shortenerService.getTargetUrl(alias)
+    const targetUrl = await getTargetUrl(alias);
+    await increaseClickCount(alias);
     return permanentRedirect(targetUrl)
-    
     
     return (
         <>
-            <h1>{alias}</h1>
         </>
     )
 }

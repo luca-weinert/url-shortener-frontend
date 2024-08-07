@@ -17,9 +17,9 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         <html lang="de" className="dark">
             <body className={inter.className + " h-full"}>
             <NextUIProvider className="dark text-foreground bg-background h-full">
-                <Header></Header>
+                {/*<Header></Header>*/}
                 <main className="h-full">{children}</main>
-                <Footer></Footer>
+                {/*<Footer></Footer>*/}
             </NextUIProvider>
             </body>
         </html>

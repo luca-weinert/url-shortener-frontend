@@ -9,7 +9,7 @@ datasource db {
 
 model shortenedUrl {
   id        String   @id @default(cuid())
-  url       String
+  targetUrl String
   alias     String   @unique
   clicks    Int
   createdAt DateTime @default(now())
