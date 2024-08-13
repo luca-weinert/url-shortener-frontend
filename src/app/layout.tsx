@@ -1,8 +1,7 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./styles/globals.sass";
-import Header from "@/app/components/header";
-import Footer from "@/app/components/footer";
+import {UserProvider} from "@auth0/nextjs-auth0/client";
 import {NextUIProvider} from "@nextui-org/react";
 
 const inter = Inter({subsets: ["latin"]});
@@ -15,6 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="de" className="dark">
+        <UserProvider>
             <body className={inter.className + " h-full"}>
             <NextUIProvider className="dark text-foreground bg-background h-full">
                 {/*<Header></Header>*/}
@@ -22,6 +22,7 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
                 {/*<Footer></Footer>*/}
             </NextUIProvider>
             </body>
+        </UserProvider>
         </html>
     );
 }
