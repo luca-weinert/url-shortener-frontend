@@ -1,12 +1,15 @@
 ﻿"use server";
-
 import {PrismaClient} from "@prisma/client";
-import {user} from "@nextui-org/react";
 
 export async function generateShortenedUrl(targetUrl: string) {
+    
+    if (!isUrlValid(targetUrl)) {
+        return;
+    }
+    
     const alias = generateRandomAlias();
     const prisma = new PrismaClient();
-    const host = process.env.NEXT_PUBLIC_HOST;
+    const host = process.env.HOST;
     const fullShortenedUrl = host + "/" + alias;
     await prisma.shortenedUrl.create({
         data: {
@@ -50,4 +53,8 @@ function generateRandomAlias(): string {
         result += chars[Math.round(Math.random() * (chars.length - 1))];
     }
     return result;
+}
+
+function isUrlValid(url: string): boolean {
+    return true;
 }

@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files to the working directory
 COPY package*.json ./
 
-# Install the dependencies
+# Install the dependencies, including Prisma
 RUN npm install
 
 # Copy the rest of the application code to the working directory
@@ -15,6 +15,12 @@ COPY . .
 
 # Install TypeScript globally
 RUN npm install -g typescript
+
+# Ensure Prisma CLI is installed globally (optional but recommended)
+RUN npm install -g prisma
+
+# Generate Prisma client (Make sure the Prisma schema and .env file are present)
+RUN npx prisma generate
 
 # Build the React application
 RUN npm run build
